@@ -310,3 +310,8 @@ The three obsolete internal app/job resources have been removed; deletion of the
 empty original environment has been accepted by Azure and is still completing.
 Current VNet resources, identities, registry, private Storage and artifacts are
 not part of that cleanup.
+
+The fork's CI workflow is enabled with the unchanged Python 3.11/3.13 matrix,
+Windows smoke job and 70% coverage gate. The separate legacy Docker publication
+workflow remains disabled on this fork because it targets the upstream GHCR
+namespace; Azure images are built in the dedicated ACR instead.
