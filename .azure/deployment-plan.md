@@ -33,7 +33,7 @@ single-tenant authenticated access. Use Bicep and Azure Developer CLI.
 - [x] Run targeted tests, regressions, container and IaC validation.
 - [x] Invoke azure-validate, then azure-deploy.
 - [x] Verify authenticated access, durable execution, and short bilingual videos.
-- [ ] Commit and push feature branch; create fork-targeted pull request.
+- [x] Commit and push feature branch; create fork-targeted pull request.
 
 ## Safety and cost boundaries
 
@@ -298,3 +298,15 @@ were not changed.
 Cloud artifacts are private in `stmptrlgz72uqyetnu`, container `tasks`, under each
 task ID's checkpoint paths and immutable `result.json` index. Download them through
 Tasks & downloads. Verified local evidence copies are retained outside the repository.
+
+### Git delivery
+
+Implementation commit: `b6e1744486c55a1651024451373f89d37f37cb56`, pushed on
+`feature/azure-foundry-delivery` without modifying main.
+Fork-targeted pull request: https://github.com/turbo998/MoneyPrinterTurbo/pull/1.
+No upstream pull request or automatic merge was performed.
+
+The three obsolete internal app/job resources have been removed; deletion of the
+empty original environment has been accepted by Azure and is still completing.
+Current VNet resources, identities, registry, private Storage and artifacts are
+not part of that cleanup.
