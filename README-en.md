@@ -18,6 +18,19 @@ English | [简体中文](README.md) | [日本語](README-ja.md) | [Releases](htt
 
 </div>
 
+## Azure / Microsoft Foundry edition
+
+This fork adds optional Azure cloud execution while retaining Streamlit, FastAPI,
+FFmpeg, and existing local providers. Combine uploaded footage with Foundry-generated
+images and motion clips, Azure Speech narration, and subtitles with real timestamps.
+Entra sign-in and managed identities protect access; Blob/Queue/Table preserve tasks
+after the browser closes. Uncertain paid requests require review instead of automatic
+resubmission.
+
+See the [Azure deployment guide](docs/AZURE.md) for private Storage networking,
+deployment, access control, usage limits, and cleanup. Cloud mode uses Noto CJK and
+disables background music by default; local mode retains its existing behavior.
+
 ## Screenshots 🖥️
 
 <h4 align="center">WebUI</h4>

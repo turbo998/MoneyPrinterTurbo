@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "environmentName": { "value": "${AZURE_ENV_NAME}" },
+    "location": { "value": "${AZURE_LOCATION}" },
+    "resourceGroupName": { "value": "${AZURE_RESOURCE_GROUP}" },
+    "textResourceGroup": { "value": "${MPT_TEXT_RESOURCE_GROUP}" },
+    "textAccountName": { "value": "${MPT_TEXT_ACCOUNT_NAME}" },
+    "imageResourceGroup": { "value": "${MPT_IMAGE_RESOURCE_GROUP}" },
+    "imageAccountName": { "value": "${MPT_IMAGE_ACCOUNT_NAME}" },
+    "speechResourceGroup": { "value": "${MPT_SPEECH_RESOURCE_GROUP}" },
+    "speechAccountName": { "value": "${MPT_SPEECH_ACCOUNT_NAME}" }
+  }
+}

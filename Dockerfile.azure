@@ -1,0 +1,37 @@
+FROM ghcr.io/astral-sh/uv:0.8.22 AS uv
+FROM python:3.11-slim-bookworm
+
+COPY --from=uv /uv /uvx /usr/local/bin/
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    UV_LINK_MODE=copy \
+    UV_PYTHON_DOWNLOADS=never \
+    PATH="/app/.venv/bin:$PATH" \
+    PYTHONPATH=/app \
+    HOME=/app/storage \
+    XDG_CACHE_HOME=/app/storage/.cache \
+    IMAGEIO_FFMPEG_EXE=/usr/bin/ffmpeg
+WORKDIR /app
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+       ca-certificates ffmpeg libgomp1 libssl3 libasound2 libstdc++6 \
+       fontconfig fonts-noto-cjk \
+    && rm -rf /var/lib/apt/lists/* \
+    && groupadd --gid 10001 mpt \
+    && useradd --uid 10001 --gid mpt --no-create-home --home-dir /app/storage mpt
+COPY pyproject.toml uv.lock ./
+RUN uv sync --frozen --no-dev --no-install-project \
+    && uv cache clean
+COPY app ./app
+COPY webui ./webui
+COPY resource/public ./resource/public
+COPY config.example.toml LICENSE ./
+RUN mkdir -p storage resource/fonts resource/songs \
+    && cp /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc resource/fonts/ \
+    && cp /usr/share/doc/fonts-noto-cjk/copyright resource/fonts/LICENSE-Noto-CJK \
+    && cp config.example.toml config.toml \
+    && chown mpt:mpt /app config.toml storage resource resource/fonts resource/songs \
+    && chmod 700 storage
+USER 10001:10001
+EXPOSE 8501
+CMD ["streamlit", "run", "webui/Main.py", "--server.address=0.0.0.0", "--server.port=8501", "--browser.gatherUsageStats=false"]

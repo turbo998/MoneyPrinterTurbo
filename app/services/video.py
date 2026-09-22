@@ -1559,14 +1559,18 @@ def render_image_zoom_video(image_path: str, clip_duration: int = 5) -> str:
         close_clip(clip)
 
 
-def preprocess_video(materials: List[MaterialInfo], clip_duration=4):
+def preprocess_video(
+    materials: List[MaterialInfo], clip_duration=4, *, material_root: str | None = None
+):
     # WebUI 在某些二次生成场景下可能传入空素材列表，这里直接返回空结果，避免抛出 NoneType 异常。
     if not materials:
         return []
 
     # 仅返回通过预处理校验的素材，避免低分辨率图片继续进入后续的视频合成流程。
     valid_materials = []
-    local_videos_dir = utils.storage_dir("local_videos", create=True)
+    # Cloud workers supply their task-local input directory; never accept this
+    # root from an API request. All material paths still pass the same boundary check.
+    local_videos_dir = material_root or utils.storage_dir("local_videos", create=True)
 
     for material in materials:
         if not material.url:
