@@ -190,6 +190,9 @@ metaso_minimax_run_timeout = 1800
 # your provider) and rendered into short zoom-effect video clips.
 # Example: "https://api.openai.com/v1" or "http://127.0.0.1:8080/v1"
 openai_image_base_url = ""
+# Set to "entra" for Azure OpenAI v1 image endpoints (no key, no POST retries).
+# Use an Azure resource URL ending in /openai/v1 and a deployment name below.
+openai_image_auth_mode = "key"
 # Optional for local gateways that need no auth. Leave empty to send requests
 # without an Authorization header; provide one or more keys for cloud relays.
 openai_image_api_keys = []
@@ -299,6 +302,12 @@ azure_api_key = ""
 azure_base_url = ""
 azure_model_name = ""
 azure_api_version = "2024-02-15-preview"
+# Entra uses DefaultAzureCredential locally and managed identity on Azure.
+# "key" preserves existing AzureOpenAI behavior; never enable local auth on a
+# keyless Azure resource. In Entra mode "v1" is preferred; "legacy" uses api_version.
+azure_auth_mode = "key"
+azure_api_mode = "v1"
+azure_max_completion_tokens = 2048
 
 # ByteDance VolcEngine Ark
 # Console: https://console.volcengine.com/ark
@@ -530,6 +539,11 @@ compute_type = "int8"
 # API key: https://portal.azure.com/#view/Microsoft_Azure_ProjectOxford/CognitiveServicesHub/~/SpeechServices
 speech_key = ""
 speech_region = ""
+# "entra" requires a custom-domain endpoint and resource ID, not a Speech key.
+# Select a -V2 voice. Edge (-V1) remains a separate local provider.
+speech_auth_mode = "key"
+speech_endpoint = ""
+speech_resource_id = ""
 
 [siliconflow]
 # SiliconFlow TTS API key: https://siliconflow.cn/

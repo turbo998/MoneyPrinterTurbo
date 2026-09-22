@@ -1499,6 +1499,10 @@ def azure_tts_v2(
         logger.error(f"invalid voice name: {voice_name}")
         raise ValueError(f"invalid voice name: {voice_name}")
     text = text.strip()
+    if config.azure.get("speech_auth_mode", "key") == "entra":
+        from app.services.azure_speech import synthesize
+
+        return synthesize(text, voice_name, voice_file, voice_rate, config.azure)
     ssml = _build_azure_v2_ssml(text, voice_name, voice_rate)
 
     def _format_duration_to_offset(duration) -> int:

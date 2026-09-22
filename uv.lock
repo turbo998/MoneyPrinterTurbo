@@ -1,5 +1,5 @@
 version = 1
-revision = 1
+revision = 3
 requires-python = ">=3.11"
 resolution-markers = [
     "python_full_version >= '3.14'",
@@ -295,15 +295,92 @@ wheels = [
 
 [[package]]
 name = "azure-cognitiveservices-speech"
-version = "1.41.1"
+version = "1.48.2"
 source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "azure-core" },
+]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0a/d7/a543d16a2c8856327564f1d1698888f978e08646716cd6396f304562b2f8/azure_cognitiveservices_speech-1.41.1-py3-none-macosx_10_14_x86_64.whl", hash = "sha256:ea9d466f236598e37ea3dad1db203a2901ef91b407e435b59d9b22669324074d", size = 7419245 },
-    { url = "https://files.pythonhosted.org/packages/6d/78/79ef2ca832d35c090cc3f89bb74e5dcc67215d02a86d98a527a4001c77f6/azure_cognitiveservices_speech-1.41.1-py3-none-macosx_11_0_arm64.whl", hash = "sha256:0f52f7852965bb2f5cf9aed0d3c6ef58238867bb6f0287eba95e42e1a513dd74", size = 7275748 },
-    { url = "https://files.pythonhosted.org/packages/be/a4/3768fd51a1339c758cb1be5e445ec1571147d2f17f62ca4b96ce9e870296/azure_cognitiveservices_speech-1.41.1-py3-none-manylinux1_x86_64.whl", hash = "sha256:70030c6f1c875895eb985de3775f62349aa8687b6616afa9498466e281f178d3", size = 39712952 },
-    { url = "https://files.pythonhosted.org/packages/24/33/160a9f334b64cd255da953a7756bdefe4a55f5295447597de052c1601c25/azure_cognitiveservices_speech-1.41.1-py3-none-manylinux2014_aarch64.whl", hash = "sha256:94ddda0deb3a9fee58a0a781b09ab8ab95401c5daf9bfc9f84ce8134d3a77055", size = 39495162 },
-    { url = "https://files.pythonhosted.org/packages/9f/f4/e0c7311aedbfa2636a63a47dfb0d94ad142e2e72885e2526cb119b14b66d/azure_cognitiveservices_speech-1.41.1-py3-none-win32.whl", hash = "sha256:039eec52c0a549a30658fa24a06d42afc6366c47b03b961c0b6f730fd421293e", size = 2108337 },
-    { url = "https://files.pythonhosted.org/packages/eb/a8/b4ce0c253c43c1ba44d795bc97910b800e8ff9991216666eb79b728b35e4/azure_cognitiveservices_speech-1.41.1-py3-none-win_amd64.whl", hash = "sha256:13679949f52f89c263e8b1c6a2d0f384d663917c58b150772cf42b710a01321c", size = 2376756 },
+    { url = "https://files.pythonhosted.org/packages/a7/ea/22cd72035b45aa084beadb31799ae4a340b8af31433877c5ad63fcab101d/azure_cognitiveservices_speech-1.48.2-py3-none-macosx_10_14_x86_64.whl", hash = "sha256:62918332eb53e26b71c1d6000bf3e255f7b2b7c8cb327ea2ec7d37181313c885", size = 3272203 },
+    { url = "https://files.pythonhosted.org/packages/75/e8/b41a8ee2d91259711f75a970b7b8e2ae489ae9c52f3e86495cc4d2d97cb5/azure_cognitiveservices_speech-1.48.2-py3-none-macosx_11_0_arm64.whl", hash = "sha256:47ffaead342a53ffca74c54bd0843a9c4aabdedd385d45742dac0404c551e384", size = 3111281 },
+    { url = "https://files.pythonhosted.org/packages/69/fd/dd4f637821b5c9a10dd7ab1bfb76082cc93dd9ebc1f551403f5b76fb1194/azure_cognitiveservices_speech-1.48.2-py3-none-manylinux1_x86_64.whl", hash = "sha256:9b03c2a0e36d926f5eb3c4c8588c5b444af257be2b7d801575faafc086a62581", size = 35424714 },
+    { url = "https://files.pythonhosted.org/packages/75/c1/d4f3cfbe2ada16a38ed72653211506cfa1fbfa4284692b3ed3ff59881777/azure_cognitiveservices_speech-1.48.2-py3-none-manylinux2014_aarch64.whl", hash = "sha256:0f01e5c9326224845031c67812664436da9ba96d19230dfa2f44a4402fbda0e5", size = 35250857 },
+    { url = "https://files.pythonhosted.org/packages/d2/ce/6dd6fea0662e95d76b41fe80802c1143569ff362b6f0159938a37a7af320/azure_cognitiveservices_speech-1.48.2-py3-none-win_amd64.whl", hash = "sha256:acd2549b3e716968e0cc9e95dc9cd512042129323158a4eeb74dfb740e53c065", size = 2199550 },
+    { url = "https://files.pythonhosted.org/packages/d9/11/c5e1daa73ce98c535dcf727639cc9400b1f7bff4727e8d97088b5b51849c/azure_cognitiveservices_speech-1.48.2-py3-none-win_arm64.whl", hash = "sha256:a8538e3732a2b157f8379063a6f9ad21c71cb3bcc24e8f2b1ee0c90023ca0d4c", size = 1990065 },
+]
+
+[[package]]
+name = "azure-core"
+version = "1.41.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "requests" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/a6/f3/b416179e408990df5db0d516283022dde0f5d0111d98c1a848e41853e81c/azure_core-1.41.0.tar.gz", hash = "sha256:f46ff5dfcd230f25cf1c19e8a34b8dc08a337b2503e268bb600a16c00db8ad5a", size = 381042 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/5b/db/325c6d7312d2200251c52323878281045aaffcb5586612296484e4280eaa/azure_core-1.41.0-py3-none-any.whl", hash = "sha256:522b4011e8180b1a3dcd2024396a4e7fe9ac37fb8597db47163d230b5efe892d", size = 220920 },
+]
+
+[[package]]
+name = "azure-data-tables"
+version = "12.7.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "azure-core" },
+    { name = "isodate" },
+    { name = "typing-extensions" },
+    { name = "yarl" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ad/b8/e76cfa7f5f847722664c6f8108c391deadcb9d9aad579650c128affd4669/azure_data_tables-12.7.0.tar.gz", hash = "sha256:b14fc94a3223a2835ff5688e17d8e107b27c7cd7c4114138f2ac81373723705d", size = 258650 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/14/3e/2b8da274b49402659cd732def2ae217f2e86312278feb56b55ccbffbbc26/azure_data_tables-12.7.0-py3-none-any.whl", hash = "sha256:24ed9b5690aa46c213182e32bb1b39a68dd9f526d84f447c287e3a401b437c10", size = 133178 },
+]
+
+[[package]]
+name = "azure-identity"
+version = "1.25.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "azure-core" },
+    { name = "cryptography" },
+    { name = "msal" },
+    { name = "msal-extensions" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c5/0e/3a63efb48aa4a5ae2cfca61ee152fbcb668092134d3eb8bfda472dd5c617/azure_identity-1.25.3.tar.gz", hash = "sha256:ab23c0d63015f50b630ef6c6cf395e7262f439ce06e5d07a64e874c724f8d9e6", size = 286304 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/49/9a/417b3a533e01953a7c618884df2cb05a71e7b68bdbce4fbdb62349d2a2e8/azure_identity-1.25.3-py3-none-any.whl", hash = "sha256:f4d0b956a8146f30333e071374171f3cfa7bdb8073adb8c3814b65567aa7447c", size = 192138 },
+]
+
+[[package]]
+name = "azure-storage-blob"
+version = "12.30.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "azure-core" },
+    { name = "cryptography" },
+    { name = "isodate" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/eb/52/afb24161875c0a6fcba4ecb93d8c1c41a88898a0ed79a570724775eadfdc/azure_storage_blob-12.30.2.tar.gz", hash = "sha256:77f8e38c319d0b0efe9444c29179277157c5c2e5ddc40ec39f1f82faacebdcb4", size = 625010 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/4a/05/d932e048368f634a73b29385e59120aef161bea774d2f1ccddff9b2147cd/azure_storage_blob-12.30.2-py3-none-any.whl", hash = "sha256:057d1f78c7cf27a0b7ec54ffdbe2436c63474be0a0e25cc55c9ce6addcd13bae", size = 438231 },
+]
+
+[[package]]
+name = "azure-storage-queue"
+version = "12.17.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "azure-core" },
+    { name = "cryptography" },
+    { name = "isodate" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/84/7d/babb616eb1ed1ac5f13cbb336875fd91c9c6f8b1702bf2ff860b222cb833/azure_storage_queue-12.17.0.tar.gz", hash = "sha256:6eb108a88554be371feb2eba9715fa0e3f7baca7b3f00c19ec417fc7ce5b3834", size = 203777 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8c/e3/6aee19df63974d87e55dc0ddf5bb18eb1022cd290b125a46792594a00673/azure_storage_queue-12.17.0-py3-none-any.whl", hash = "sha256:aaef08ee2613f84a3a85e60a059d29567361e5a2af455298bb0e529f0b47d5a1", size = 189526 },
 ]
 
 [[package]]
@@ -1233,6 +1310,15 @@ wheels = [
 ]
 
 [[package]]
+name = "isodate"
+version = "0.7.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/54/4d/e940025e2ce31a8ce1202635910747e5a87cc3a6a6bb2d00973375014749/isodate-0.7.2.tar.gz", hash = "sha256:4cd1aa0f43ca76f4a6c6c0292a85f40b35ec2e43e315b59f06e6d32171a953e6", size = 29705 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/15/aa/0aca39a37d3c7eb941ba736ede56d689e7be91cab5d9ca846bde3999eba6/isodate-0.7.2-py3-none-any.whl", hash = "sha256:28009937d8031054830160fce6d409ed342816b543597cece116d966c6d99e15", size = 22320 },
+]
+
+[[package]]
 name = "itsdangerous"
 version = "2.2.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1503,6 +1589,10 @@ source = { virtual = "." }
 dependencies = [
     { name = "audioop-lts", marker = "python_full_version >= '3.13'" },
     { name = "azure-cognitiveservices-speech" },
+    { name = "azure-data-tables" },
+    { name = "azure-identity" },
+    { name = "azure-storage-blob" },
+    { name = "azure-storage-queue" },
     { name = "dashscope" },
     { name = "edge-tts" },
     { name = "fastapi" },
@@ -1539,7 +1629,11 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "audioop-lts", marker = "python_full_version >= '3.13'", specifier = "==0.2.2" },
-    { name = "azure-cognitiveservices-speech", specifier = "==1.41.1" },
+    { name = "azure-cognitiveservices-speech", specifier = "==1.48.2" },
+    { name = "azure-data-tables", specifier = ">=12.7.0,<13" },
+    { name = "azure-identity", specifier = ">=1.25.0,<2" },
+    { name = "azure-storage-blob", specifier = ">=12.27.0,<13" },
+    { name = "azure-storage-queue", specifier = ">=12.14.0,<13" },
     { name = "dashscope", specifier = "==1.20.14" },
     { name = "edge-tts", specifier = "==7.2.7" },
     { name = "fastapi", specifier = "==0.136.3" },
@@ -1595,6 +1689,32 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/e0/47/dd32fa426cc72114383ac549964eecb20ecfd886d1e5ccf5340b55b02f57/mpmath-1.3.0.tar.gz", hash = "sha256:7a28eb2a9774d00c7bc92411c19a89209d5da7c4c9a9e227be8330a23a25b91f", size = 508106 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/43/e3/7d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209/mpmath-1.3.0-py3-none-any.whl", hash = "sha256:a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c", size = 536198 },
+]
+
+[[package]]
+name = "msal"
+version = "1.39.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "cryptography" },
+    { name = "pyjwt", extra = ["crypto"] },
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/bb/85/747d28986a44b715cc51cf57aa021c8fd94e9614064261ceec77320e8b0b/msal-1.39.0.tar.gz", hash = "sha256:6ab7de335e6d7f5717e2c7e1dbf86e4dda2f6acf3c56773b78dc53ebc6395b5f", size = 205360 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a4/32/178457385925ce301c7b3232bd85665d4df57da39568b62dcfc74031873f/msal-1.39.0-py3-none-any.whl", hash = "sha256:2d2577886906cd7293850dffa2da29119966c213bfc6ec0cecf8bf7621e1ca77", size = 131629 },
+]
+
+[[package]]
+name = "msal-extensions"
+version = "1.3.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "msal" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/01/99/5d239b6156eddf761a636bded1118414d161bd6b7b37a9335549ed159396/msal_extensions-1.3.1.tar.gz", hash = "sha256:c5b0fd10f65ef62b5f1d62f4251d51cbcaf003fcedae8c91b040a488614be1a4", size = 23315 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/5e/75/bd9b7bb966668920f06b200e84454c8f3566b102183bc55c5473d96cb2b9/msal_extensions-1.3.1-py3-none-any.whl", hash = "sha256:96d3de4d034504e969ac5e85bae8106c8373b5c6568e4c8fa7af2eca9dbe6bca", size = 20583 },
 ]
 
 [[package]]
@@ -2361,6 +2481,20 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/c3/b2/bc9c9196916376152d655522fdcebac55e66de6603a76a02bca1b6414f6c/pygments-2.20.0.tar.gz", hash = "sha256:6757cd03768053ff99f3039c1a36d6c0aa0b263438fcab17520b30a303a82b5f", size = 4955991 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/f4/7e/a72dd26f3b0f4f2bf1dd8923c85f7ceb43172af56d63c7383eb62b332364/pygments-2.20.0-py3-none-any.whl", hash = "sha256:81a9e26dd42fd28a23a2d169d86d7ac03b46e2f8b59ed4698fb4785f946d0176", size = 1231151 },
+]
+
+[[package]]
+name = "pyjwt"
+version = "2.14.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/af/c3/8a3b59c25070cc61dc517fbdfa5dc0904670c96f605cc69759dc09166b99/pyjwt-2.14.0.tar.gz", hash = "sha256:77283c83fb56ecf566a886c757a714bc83668e38156de2cce8263302f42e0b86", size = 113177 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/9c/97/672cb32ce0dfea44b740cb7b4f97038463b9cf7c0ead1aacf595572851d6/pyjwt-2.14.0-py3-none-any.whl", hash = "sha256:ad0cef71c756a56e74863c2919cf0985f72decbcfcb550ee2f422e7c62b5eedc", size = 32896 },
+]
+
+[package.optional-dependencies]
+crypto = [
+    { name = "cryptography" },
 ]
 
 [[package]]

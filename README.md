@@ -18,6 +18,16 @@
 
 </div>
 
+## Azure / Microsoft Foundry 版本
+
+本 fork 增加可选的 Azure 云模式，保留原 Streamlit、FastAPI、FFmpeg 和本地供应商。
+云模式支持上传素材混剪、Foundry 生成图像与动态片段、Azure Speech 配音及真实时标字幕，
+通过 Entra ID 登录和托管身份访问服务。任务持久化到 Blob/Queue/Table，浏览器关闭不影响处理；
+收费请求结果不明确时进入人工核查，不自动重复付费。
+
+部署、私有存储网络、访问控制、用量边界和清理步骤见 [Azure 部署指南](docs/AZURE.md)。
+云模式默认关闭背景音乐，使用 Noto CJK；本地模式保持原有功能。
+
 ## 界面预览 🖥️
 
 <h4 align="center">WebUI</h4>

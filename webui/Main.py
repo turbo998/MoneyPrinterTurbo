@@ -88,6 +88,11 @@ st.set_page_config(
 style_file = Path(__file__).with_name("styles.css")
 streamlit_style = f"<style>{style_file.read_text(encoding='utf-8')}</style>"
 st.markdown(streamlit_style, unsafe_allow_html=True)
+if os.getenv("MPT_CLOUD_MODE") == "1":
+    from webui.cloud import render
+
+    render()
+    st.stop()
 # 定义资源目录
 font_dir = os.path.join(root_dir, "resource", "fonts")
 song_dir = os.path.join(root_dir, "resource", "songs")

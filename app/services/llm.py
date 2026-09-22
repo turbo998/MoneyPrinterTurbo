@@ -310,7 +310,10 @@ def _generate_response(prompt: str, app_config=None) -> str:
             for field in provider.extra_fields
         }
 
-        if provider.requires_api_key and not api_key:
+        azure_entra = adapter == "azure" and runtime_app_config.get(
+            "azure_auth_mode", "key"
+        ) == "entra"
+        if provider.requires_api_key and not api_key and not azure_entra:
             raise ValueError(
                 f"{llm_provider}: api_key is not set, please set it in the config.toml file."
             )
@@ -449,13 +452,34 @@ def _generate_response(prompt: str, app_config=None) -> str:
             # 这里在 Azure 分支内完成请求并立即返回，避免客户端被后续 fallback
             # 覆盖，导致用户配置的 Azure 凭证通过校验但实际请求没有被使用。
             logger.info(f"requesting azure chat completion, model: {model_name}")
-            client = AzureOpenAI(
-                api_key=api_key,
-                api_version=api_version,
-                azure_endpoint=base_url,
-            )
+            if azure_entra:
+                from app.services.azure_auth import azure_endpoint, token_provider
+
+                if runtime_app_config.get("azure_api_mode", "v1") == "v1":
+                    client = OpenAI(
+                        api_key=token_provider(),
+                        base_url=azure_endpoint(base_url, v1=True),
+                        max_retries=0,
+                        timeout=90,
+                    )
+                else:
+                    client = AzureOpenAI(
+                        azure_ad_token_provider=token_provider(),
+                        api_version=api_version,
+                        azure_endpoint=azure_endpoint(base_url),
+                        max_retries=0,
+                        timeout=90,
+                    )
+            else:
+                client = AzureOpenAI(
+                    api_key=api_key,
+                    api_version=api_version,
+                    azure_endpoint=base_url,
+                )
             response = client.chat.completions.create(
-                model=model_name, messages=[{"role": "user", "content": prompt}]
+                model=model_name, messages=[{"role": "user", "content": prompt}],
+                **({"max_completion_tokens": int(runtime_app_config.get("azure_max_completion_tokens", 2048))}
+                   if azure_entra else {}),
             )
             if response:
                 if isinstance(response, ChatCompletion):

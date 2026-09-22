@@ -1317,6 +1317,23 @@ def _request_openai_image(endpoint: str, payload: dict) -> tuple[bytes | None, s
     API Key 允许为空：完全本地的 ComfyUI/SD 网关通常不需要鉴权，为空时
     不发送 Authorization 头。
     """
+    if config.app.get("openai_image_auth_mode") == "entra":
+        from app.services.azure_auth import azure_endpoint, token_provider
+
+        expected = azure_endpoint(
+            config.app.get("openai_image_base_url", ""), v1=True
+        ) + OPENAI_IMAGE_ENDPOINT_PATH
+        if endpoint != expected:
+            raise ValueError("Unexpected Azure image endpoint")
+        # Exactly one POST. The cloud checkpoint fence records uncertain outcomes.
+        token = token_provider()()
+        response = requests.post(
+            endpoint, json=payload,
+            headers={"Authorization": f"Bearer {token}"},
+            timeout=OPENAI_IMAGE_REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        return _parse_openai_image_response(response, token)
     api_keys = config.app.get("openai_image_api_keys")
     if isinstance(api_keys, (list, tuple)):
         configured_keys = [k for k in api_keys if str(k or "").strip()]
